@@ -1,0 +1,51 @@
+<h1>Books-Purchases</h1>
+    <table class="table w-auto table-hover" id="books-purchases-table">
+        <thead>
+          <tr>
+              {{#each data.[0]}}
+              <th>
+                  {{@key}}
+              </th>
+              {{/each}}
+          </tr>
+        </thead>
+        <tbody>
+          {{#each data}}
+              <tr>
+                  <td>{{this.id}}</td>
+                  <td>{{this.Title}}</td>
+                  <td>{{this.Purchase}}</td>
+              </tr>
+          {{/each}}
+        </tbody>
+    </table>
+
+    {{!-- CREATE --}}
+    <h2>Add Book Purchases</h2>
+    <form id="add-books-purchases-form">
+
+        <div class="mb-3">
+            <label for="input-book" class="form-label">Book ID:</label>
+            <select name="input-book" id="input-book" class="form-select w-auto">
+                <option value="">Select a Book</option>
+                {{#each data}}
+                  <option value="{{ this.book_id }}">{{ this.Title }}</option>
+                {{/each}}
+            </select>
+        </div>
+
+
+        <div class="mb-3">
+            <label for="input-purchase" class="form-label">Purchases </label>
+            <select name="input-purchase" id="input-purchase" class="form-select w-auto">
+                <option value="">Select a Purchase</option>
+                {{#each data}}
+                  <option value="{{ this.purchase_id }}">{{ this.Purchase }}</option>
+                {{/each}}
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+  <script src="./js/add_books_purchases.js"></script>
